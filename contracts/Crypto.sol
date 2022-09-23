@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
 
 contract Crypto {
     uint256 constant public gx = 19823850254741169819033785099293761935467223354323761392354670518001715552183;

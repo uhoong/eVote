@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
 import "./Crypto.sol";
 
 contract eVote {
@@ -25,7 +26,7 @@ contract eVote {
         uint256 _votingBlockInterval,
         uint256 _tallyBlockInterval,
         uint256 _challengeBlockInterval
-    ) public payable {
+    ) payable {
         require(msg.value == DEPOSIT, "Invalid deposit value");
         crypto = Crypto(_cryptoAddress);
         admin = msg.sender;
@@ -143,7 +144,7 @@ contract eVote {
         }
         if (disputed) {
             voteResult = 0;
-            msg.sender.transfer(DEPOSIT);
+            payable(msg.sender).transfer(DEPOSIT);
         }
     }
 
@@ -159,6 +160,6 @@ contract eVote {
             "Illegal reclaim"
         );
         refunded[msg.sender] = true;
-        msg.sender.transfer(DEPOSIT);
+        payable(msg.sender).transfer(DEPOSIT);
     }
 }
